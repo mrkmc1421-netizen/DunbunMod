@@ -1,0 +1,196 @@
+DunbunMod.extensions.register({
+  id:"motion",
+  name:"Motion",
+  blocks:[
+    {opcode:"move",text:"move [STEPS] steps",blockType:"command",arguments:{STEPS:{type:"number"}}},
+    {opcode:"turnRight",text:"turn right [DEG] degrees",blockType:"command",arguments:{DEG:{type:"number"}}},
+    {opcode:"turnLeft",text:"turn left [DEG] degrees",blockType:"command",arguments:{DEG:{type:"number"}}},
+    {opcode:"gotoXY",text:"go to x:[X] y:[Y]",blockType:"command",arguments:{X:{type:"number"},Y:{type:"number"}}},
+    {opcode:"glide",text:"glide [SEC] secs to x:[X] y:[Y]",blockType:"command",arguments:{SEC:{type:"number"},X:{type:"number"},Y:{type:"number"}}},
+    {opcode:"pointDir",text:"point in direction [DIR]",blockType:"command",arguments:{DIR:{type:"number"}}},
+    {opcode:"pointTo",text:"point towards [SPRITE]",blockType:"command",arguments:{SPRITE:{type:"string"}}},
+    {opcode:"changeX",text:"change x by [DX]",blockType:"command",arguments:{DX:{type:"number"}}},
+    {opcode:"setX",text:"set x to [X]",blockType:"command",arguments:{X:{type:"number"}}},
+    {opcode:"changeY",text:"change y by [DY]",blockType:"command",arguments:{DY:{type:"number"}}},
+    {opcode:"setY",text:"set y to [Y]",blockType:"command",arguments:{Y:{type:"number"}}},
+    {opcode:"ifEdge",text:"if on edge, bounce",blockType:"command"},
+    {opcode:"xpos",text:"x position",blockType:"reporter"},
+    {opcode:"ypos",text:"y position",blockType:"reporter"},
+    {opcode:"dir",text:"direction",blockType:"reporter"}
+  ]
+});
+DunbunMod.extensions.register({
+  id:"looks",
+  name:"Looks",
+  blocks:[
+    {opcode:"say",text:"say [MSG]",blockType:"command",arguments:{MSG:{type:"string"}}},
+    {opcode:"sayFor",text:"say [MSG] for [SEC] seconds",blockType:"command",arguments:{MSG:{type:"string"},SEC:{type:"number"}}},
+    {opcode:"think",text:"think [MSG]",blockType:"command",arguments:{MSG:{type:"string"}}},
+    {opcode:"thinkFor",text:"think [MSG] for [SEC] seconds",blockType:"command",arguments:{MSG:{type:"string"},SEC:{type:"number"}}},
+    {opcode:"switchCostume",text:"switch costume to [COSTUME]",blockType:"command",arguments:{COSTUME:{type:"string"}}},
+    {opcode:"nextCostume",text:"next costume",blockType:"command"},
+    {opcode:"switchBackdrop",text:"switch backdrop to [BACKDROP]",blockType:"command",arguments:{BACKDROP:{type:"string"}}},
+    {opcode:"changeSize",text:"change size by [SIZE]",blockType:"command",arguments:{SIZE:{type:"number"}}},
+    {opcode:"setSize",text:"set size to [SIZE]%",blockType:"command",arguments:{SIZE:{type:"number"}}},
+    {opcode:"show",text:"show",blockType:"command"},
+    {opcode:"hide",text:"hide",blockType:"command"},
+    {opcode:"goFront",text:"go to front layer",blockType:"command"},
+    {opcode:"goBack",text:"go back [LAYERS] layers",blockType:"command",arguments:{LAYERS:{type:"number"}}},
+    {opcode:"size",text:"size",blockType:"reporter"}
+  ]
+});
+DunbunMod.extensions.register({
+  id:"sound",
+  name:"Sound",
+  blocks:[
+    {opcode:"playSound",text:"play sound [SND]",blockType:"command",arguments:{SND:{type:"string"}}},
+    {opcode:"playSoundUntil",text:"play sound [SND] until done",blockType:"command",arguments:{SND:{type:"string"}}},
+    {opcode:"stopSounds",text:"stop all sounds",blockType:"command"},
+    {opcode:"changePitch",text:"change pitch by [P]",blockType:"command",arguments:{P:{type:"number"}}},
+    {opcode:"setPitch",text:"set pitch to [P]",blockType:"command",arguments:{P:{type:"number"}}},
+    {opcode:"changeVol",text:"change volume by [V]",blockType:"command",arguments:{V:{type:"number"}}},
+    {opcode:"setVol",text:"set volume to [V]%",blockType:"command",arguments:{V:{type:"number"}}},
+    {opcode:"vol",text:"volume",blockType:"reporter"}
+  ]
+});
+DunbunMod.extensions.register({
+  id:"events",
+  name:"Events",
+  blocks:[
+    {opcode:"flag",text:"when green flag clicked",blockType:"hat"},
+    {opcode:"key",text:"when [KEY] key pressed",blockType:"hat",arguments:{KEY:{type:"string"}}},
+    {opcode:"click",text:"when this sprite clicked",blockType:"hat"},
+    {opcode:"backdrop",text:"when backdrop switches to [B]",blockType:"hat",arguments:{B:{type:"string"}}},
+    {opcode:"loud",text:"when loudness > [L]",blockType:"hat",arguments:{L:{type:"number"}}},
+    {opcode:"broadcast",text:"broadcast [MSG]",blockType:"command",arguments:{MSG:{type:"string"}}},
+    {opcode:"broadcastWait",text:"broadcast [MSG] and wait",blockType:"command",arguments:{MSG:{type:"string"}}}
+  ]
+});
+DunbunMod.extensions.register({
+  id:"control",
+  name:"Control",
+  blocks:[
+    {opcode:"wait",text:"wait [SEC] seconds",blockType:"command",arguments:{SEC:{type:"number"}}},
+    {opcode:"repeat",text:"repeat [N]",blockType:"loop",arguments:{N:{type:"number"}}},
+    {opcode:"forever",text:"forever",blockType:"loop"},
+    {opcode:"if",text:"if <COND> then",blockType:"conditional",arguments:{COND:{type:"boolean"}}},
+    {opcode:"ifElse",text:"if <COND> then else",blockType:"conditional",arguments:{COND:{type:"boolean"}}},
+    {opcode:"waitUntil",text:"wait until <COND>",blockType:"command",arguments:{COND:{type:"boolean"}}},
+    {opcode:"repeatUntil",text:"repeat until <COND>",blockType:"loop",arguments:{COND:{type:"boolean"}}},
+    {opcode:"stop",text:"stop [TYPE]",blockType:"command",arguments:{TYPE:{type:"string"}}}
+  ]
+});
+      DunbunMod.extensions.register({
+  id:"sensing",
+  name:"Sensing",
+  blocks:[
+    {opcode:"touching",text:"touching [SPRITE]?",blockType:"boolean",arguments:{SPRITE:{type:"string"}}},
+    {opcode:"touchingColor",text:"touching color [CLR]?",blockType:"boolean",arguments:{CLR:{type:"string"}}},
+    {opcode:"colorTouching",text:"color [C1] is touching [C2]?",blockType:"boolean",arguments:{C1:{type:"string"},C2:{type:"string"}}},
+    {opcode:"distance",text:"distance to [SPRITE]",blockType:"reporter",arguments:{SPRITE:{type:"string"}}},
+    {opcode:"ask",text:"ask [Q] and wait",blockType:"command",arguments:{Q:{type:"string"}}},
+    {opcode:"answer",text:"answer",blockType:"reporter"},
+    {opcode:"keyPressed",text:"key [KEY] pressed?",blockType:"boolean",arguments:{KEY:{type:"string"}}},
+    {opcode:"mouseDown",text:"mouse down?",blockType:"boolean"},
+    {opcode:"mouseX",text:"mouse x",blockType:"reporter"},
+    {opcode:"mouseY",text:"mouse y",blockType:"reporter"},
+    {opcode:"loudness",text:"loudness",blockType:"reporter"},
+    {opcode:"timer",text:"timer",blockType:"reporter"},
+    {opcode:"resetTimer",text:"reset timer",blockType:"command"}
+  ]
+});
+      DunbunMod.extensions.register({
+  id:"sensing",
+  name:"Sensing",
+  blocks:[
+    {opcode:"touching",text:"touching [SPRITE]?",blockType:"boolean",arguments:{SPRITE:{type:"string"}}},
+    {opcode:"touchingColor",text:"touching color [CLR]?",blockType:"boolean",arguments:{CLR:{type:"string"}}},
+    {opcode:"colorTouching",text:"color [C1] is touching [C2]?",blockType:"boolean",arguments:{C1:{type:"string"},C2:{type:"string"}}},
+    {opcode:"distance",text:"distance to [SPRITE]",blockType:"reporter",arguments:{SPRITE:{type:"string"}}},
+    {opcode:"ask",text:"ask [Q] and wait",blockType:"command",arguments:{Q:{type:"string"}}},
+    {opcode:"answer",text:"answer",blockType:"reporter"},
+    {opcode:"keyPressed",text:"key [KEY] pressed?",blockType:"boolean",arguments:{KEY:{type:"string"}}},
+    {opcode:"mouseDown",text:"mouse down?",blockType:"boolean"},
+    {opcode:"mouseX",text:"mouse x",blockType:"reporter"},
+    {opcode:"mouseY",text:"mouse y",blockType:"reporter"},
+    {opcode:"loudness",text:"loudness",blockType:"reporter"},
+    {opcode:"timer",text:"timer",blockType:"reporter"},
+    {opcode:"resetTimer",text:"reset timer",blockType:"command"}
+  ]
+});
+      DunbunMod.extensions.register({
+  id:"operators",
+  name:"Operators",
+  blocks:[
+    {opcode:"add",text:"[A] + [B]",blockType:"reporter",arguments:{A:{type:"number"},B:{type:"number"}}},
+    {opcode:"sub",text:"[A] - [B]",blockType:"reporter",arguments:{A:{type:"number"},B:{type:"number"}}},
+    {opcode:"mul",text:"[A] * [B]",blockType:"reporter",arguments:{A:{type:"number"},B:{type:"number"}}},
+    {opcode:"div",text:"[A] / [B]",blockType:"reporter",arguments:{A:{type:"number"},B:{type:"number"}}},
+    {opcode:"rand",text:"pick random [A] to [B]",blockType:"reporter",arguments:{A:{type:"number"},B:{type:"number"}}},
+    {opcode:"gt",text:"[A] > [B]",blockType:"boolean",arguments:{A:{type:"number"},B:{type:"number"}}},
+    {opcode:"lt",text:"[A] < [B]",blockType:"boolean",arguments:{A:{type:"number"},B:{type:"number"}}},
+    {opcode:"eq",text:"[A] = [B]",blockType:"boolean",arguments:{A:{type:"string"},B:{type:"string"}}},
+    {opcode:"and",text:"<A> and <B>",blockType:"boolean",arguments:{A:{type:"boolean"},B:{type:"boolean"}}},
+    {opcode:"or",text:"<A> or <B>",blockType:"boolean",arguments:{A:{type:"boolean"},B:{type:"boolean"}}},
+    {opcode:"not",text:"not <A>",blockType:"boolean",arguments:{A:{type:"boolean"}}},
+    {opcode:"join",text:"join [A] [B]",blockType:"reporter",arguments:{A:{type:"string"},B:{type:"string"}}},
+    {opcode:"letter",text:"letter [N] of [STR]",blockType:"reporter",arguments:{N:{type:"number"},STR:{type:"string"}}},
+    {opcode:"length",text:"length of [STR]",blockType:"reporter",arguments:{STR:{type:"string"}}}
+  ]
+});
+      DunbunMod.extensions.register({
+  id:"variables",
+  name:"Variables",
+  blocks:[
+    {opcode:"setVar",text:"set [VAR] to [VAL]",blockType:"command",arguments:{VAR:{type:"string"},VAL:{type:"string"}}},
+    {opcode:"changeVar",text:"change [VAR] by [VAL]",blockType:"command",arguments:{VAR:{type:"string"},VAL:{type:"number"}}},
+    {opcode:"showVar",text:"show variable [VAR]",blockType:"command",arguments:{VAR:{type:"string"}}},
+    {opcode:"hideVar",text:"hide variable [VAR]",blockType:"command",arguments:{VAR:{type:"string"}}}
+  ]
+});
+      DunbunMod.extensions.register({
+  id:"lists",
+  name:"Lists",
+  blocks:[
+    {opcode:"addToList",text:"add [ITEM] to [LIST]",blockType:"command",arguments:{ITEM:{type:"string"},LIST:{type:"string"}}},
+    {opcode:"deleteFromList",text:"delete [INDEX] of [LIST]",blockType:"command",arguments:{INDEX:{type:"number"},LIST:{type:"string"}}},
+    {opcode:"insertList",text:"insert [ITEM] at [INDEX] of [LIST]",blockType:"command",arguments:{ITEM:{type:"string"},INDEX:{type:"number"},LIST:{type:"string"}}},
+    {opcode:"replaceList",text:"replace item [INDEX] of [LIST] with [ITEM]",blockType:"command",arguments:{INDEX:{type:"number"},LIST:{type:"string"},ITEM:{type:"string"}}},
+    {opcode:"itemOfList",text:"item [INDEX] of [LIST]",blockType:"reporter",arguments:{INDEX:{type:"number"},LIST:{type:"string"}}},
+    {opcode:"lengthList",text:"length of [LIST]",blockType:"reporter",arguments:{LIST:{type:"string"}}},
+    {opcode:"containsList",text:"[LIST] contains [ITEM]?",blockType:"boolean",arguments:{LIST:{type:"string"},ITEM:{type:"string"}}}
+  ]
+});
+      <script>
+  // DunbunMod auto-loader for all default Scratch blocks
+  const dunbunDefaultExtensions = [
+    "motion.js",
+    "looks.js",
+    "sound.js",
+    "events.js",
+    "control.js",
+    "sensing.js",
+    "operators.js",
+    "variables.js",
+    "lists.js"
+  ];
+
+  function loadDunbunExtensions() {
+    dunbunDefaultExtensions.forEach(file => {
+      const script = document.createElement("script");
+      script.src = "extensions/" + file;
+      script.onload = () => console.log("Loaded:", file);
+      document.body.appendChild(script);
+    });
+  }
+
+  // AUTO‑LOAD ON PAGE OPEN
+  loadDunbunExtensions();
+</script>
+<button id="extensionsBtn">Extensions</button>
+
+<script>
+  document.getElementById("extensionsBtn").onclick = () => {
+    window.location.href = "extensions.html";
+  };
+                             </script>
