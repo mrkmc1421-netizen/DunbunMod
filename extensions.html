@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>DunbunMod Extensions</title>
+  <style>
+    body { background:#111; color:#fff; font-family:sans-serif; padding:20px; }
+    .ext { padding:10px; background:#222; margin:6px 0; cursor:pointer; border:1px solid #444; }
+  </style>
+</head>
+<body>
+  <h1>DunbunMod Extensions</h1>
+  <p>Click an extension to load its blocks.</p>
+
+  <div id="extList"></div>
+
+  <script>
+    // FULL extensions/ directory
+    const extensionsDir = [
+      "music.js",
+      "pen.js",
+      "text2speech.js",
+      "video.js",
+      "translate.js",
+      "microbit.js",
+      "ev3.js",
+      "wedo.js",
+      "makey.js",
+      "spike.js"
+    ];
+
+    const list = document.getElementById("extList");
+
+    extensionsDir.forEach(file => {
+      const div = document.createElement("div");
+      div.className = "ext";
+      div.textContent = file.replace(".js", "");
+
+      div.onclick = () => {
+        const script = document.createElement("script");
+        script.src = "extensions/" + file;
+        document.body.appendChild(script);
+        alert("Loaded extension: " + file);
+      };
+
+      list.appendChild(div);
+    });
+  </script>
+</body>
+</html>
